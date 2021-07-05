@@ -61,8 +61,33 @@ void display(){
     cout<<tn->data << " " ;
     tn = tn->next ;
   }
+  
 }
 
+// Deletetion Logic
+
+void delFirstElement() {
+  struct Node *tn = start ;
+  start = start -> next ;
+
+  free(tn) ;
+}
+
+void deleteLastNode(){
+
+
+  // Find the second last node
+   struct Node* second_last = start;
+    while (second_last->next->next != NULL)
+        second_last = second_last->next;
+ 
+    // Delete last node
+    free(second_last->next);
+ 
+    // Change next of second last
+    second_last->next = NULL;
+
+}
 int main() {
 
 // create ll 
@@ -83,6 +108,16 @@ int main() {
 
   cout<<"\n"<< endl ;
  insertAtIndex(60, 4) ;
+ display() ;
+
+ // delete
+ cout<<"\n"<<endl ;
+ delFirstElement() ;
+ display() ;
+
+ // delete
+ cout<<"\n"<<endl ;
+ deleteLastNode() ;
  display() ;
   return  0 ;
 }
